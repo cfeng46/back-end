@@ -1,0 +1,600 @@
+{
+    "401": {
+        "QuestionID": 401,
+        "Question Text": "Please select your age range",
+        "Response Type": "Radio",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Under 18",
+                    "Tags": ["Minor"],
+                    "NextQID": 402
+                },
+                {
+                    "Text": "Over 18",
+                    "Tags": ["Adult"],
+                    "NextQID": 406
+                }
+            ]
+    },
+    "402": {
+        "QuestionID": 402,
+        "Question Text": "Do you feel safe where you live?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 403
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Homeless Populations", "Shelter"],
+                    "NextQID": 404
+                }
+            ]
+    },
+    "403": {
+        "QuestionID": 403,
+        "Question Text": "Are you in contact with any of your family members?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 501
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "404": {
+        "QuestionID": 404,
+        "Question Text": "Are you in contact with any of your family members?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 405
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "405": {
+        "QuestionID": 405,
+        "Question Text": "Are any of them dependent on you?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 501
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "406": {
+        "QuestionID": 406,
+        "Question Text": "Do you have a safe place to live?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 407
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 410
+                }
+            ]
+    },
+    "407": {
+        "QuestionID": 407,
+        "Question Text": "Do you have dependents?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Child Care"],
+                    "NextQID": 408
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Family Reunification"],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "408": {
+        "QuestionID": 408,
+        "Question Text": "Are they living with you?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 501
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Family Reunification"],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "410": {
+        "QuestionID": 410,
+        "Question Text": "Do you have dependents?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Child Care"],
+                    "NextQID": 411
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "411": {
+        "QuestionID": 411,
+        "Question Text": "Are they travelling with you?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 411
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Family Reunification"],
+                    "NextQID": 501
+                }
+            ]
+    },
+    "701": {
+        "QuestionID": 701,
+        "Question Text": "What gender do you identify as?",
+        "Response Type": "Radio",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Male",
+                    "Tags": ["Male"],
+                    "NextQID": 702
+                },
+                {
+                    "Text": "Female",
+                    "Tags": ["Female"],
+                    "NextQID": 702
+                },
+                {
+                    "Text": "Transgender Male to Female",
+                    "Tags": ["Female", "Transgender Male-to-Female", "LGBTQI Individuals"],
+                    "NextQID": 0
+                },
+                {
+                    "Text": "Transgender Male to Female",
+                    "Tags": ["Male", "Transgender Female-to-Male", "LGBTQI Individuals"],
+                    "NextQID": 0
+                }
+            ]
+    },
+    "702": {
+        "QuestionID": 702,
+        "Question Text": "What is your sexual orientation?",
+        "Question Type": "Radio",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Straight",
+                    "Tags": [],
+                    "NextQID": 0
+                },
+                {
+                    "Text": "LGBTQI",
+                    "Tags": ["LGBTQI"],
+                    "NextQID": 0
+                }
+            ]
+    },
+    "501": {
+        "QuestionID": 501,
+        "Question Text": "Are you a US citizen?",
+        "Response Type": "YN",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Citizens of the Country"],
+                    "NextQID": 601
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Foreign Nationals"],
+                    "NextQID": 502
+                }
+            ]
+    },
+    "502": {
+        "QuestionID": 502,
+        "Question Text": "Did you intentionally arrive in the United States to work?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Migrant Workers"],
+                    "NextQID": 503
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 503
+                }
+            ]
+    },
+    "503": {
+        "QuestionID": 503,
+        "Question Text": "Are you legally in the United States?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 601
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Legal Services"],
+                    "NextQID": 504
+                }
+            ]
+    },
+    "504": {
+        "QuestionID": 504,
+        "Question Text": "Are you looking to return to your country of origin?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Repatriation"],
+                    "NextQID": 601
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Refugees/Asylum Seekers"],
+                    "NextQID": 601
+                }
+            ]
+    },
+    "601": {
+        "QuestionID": 601,
+        "Question Text": "Do you consider yourself an ethnic minority?",
+        "Response Type": "YN",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Ethnic Minorities"],
+                    "NextQID": 602
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 602
+                }
+            ]
+    },
+    "702": {
+        "QuestionID": 702,
+        "Question Text": "Do you consider yourself a member of a religious, social, or ethnic minority?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Religious/Social/Political Minority Groups"],
+                    "NextQID": 0
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 0
+                }
+            ]
+    },
+    "301": {
+        "QuestionID": 301,
+        "Question Text": "Do you have HIV/AIDS?",
+        "Response Type": "YN",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["People with HIV/AIDS"],
+                    "NextQID": 302
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 302
+                }
+            ]
+    },
+    "301": {
+        "QuestionID": 302,
+        "Question Text": "Are you pregnant?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Health Care","Child Care"],
+                    "NextQID": 303
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 303
+                }
+            ]
+    },
+    "303": {
+        "QuestionID": 303,
+        "Question Text": "Do you have a physical disability?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["People with Disabilities","Health Care"],
+                    "NextQID": 304
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 304
+                }
+            ]
+    },
+    "304": {
+        "QuestionID": 304,
+        "Question Text": "Do you suffer from any psychological disabilities or trauma?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Psychological Support","Health Care"],
+                    "NextQID": 305
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 305
+                }
+            ]
+    },
+    "305": {
+        "QuestionID": 305,
+        "Question Text": "Do you suffer from any substance dependencies?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Rehabilitation/Case Management","Health Care"],
+                    "NextQID": 401
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 401
+                }
+            ]
+    },
+    "201": {
+        "QuestionID": 201,
+        "Question Text": "What types of trafficking have you experienced?",
+        "Response Type": "Radio",
+        "AnswerPossibilities":
+            [
+                {
+                    "Text": "Forced Marriage",
+                    "Tags": ["Early/Child Marriage", "Forced Marriage", "International Marriage Brokering (IMB)"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "International Adoption",
+                    "Tags": ["International Adoption"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "Labor Trafficking",
+                    "Tags": ["Labor Trafficking"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "Organ Trafficking",
+                    "Tags": ["Organ Trafficking"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "Sales of Children",
+                    "Tags": ["Sales of Children"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "Sex Trafficking",
+                    "Tags": ["Sex Trafficking"],
+                    "NextQID": 202
+                },
+                {
+                    "Text": "Other",
+                    "Tags": ["Other"],
+                    "NextQID": 202
+                }
+            ]
+    },
+    "202": {
+        "QuestionID": 202,
+        "Question Text": "Have you ever been a sex worker?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Sex Worker"],
+                    "NextQID": 203
+                },
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 203
+                }
+            ]
+    },
+    "203": {
+        "QuestionID": 203,
+        "Question Text": "Do you feel vulnerable to revictimization?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "No",
+                    "Tags": [],
+                    "NextQID": 204
+                },
+                {
+                    "Text": "Yes",
+                    "Tags": ["Crisis Services", "Education/Job Training", "Prevention/Advice/Safety Planning"],
+                    "NextQID": 301
+                }
+            ]
+    },
+    "204": {
+        "QuestionID": 204,
+        "Question Text": "How long has it been since you were trafficked?",
+        "Question Type": "Radio",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Less than a month",
+                    "Tags": ["Crisis Services"],
+                    "NextQID": 301
+                },
+                {
+                    "Text": "Under 5 years",
+                    "Tags": ["Prevention/Advice/Safety Planning"],
+                    "NextQID": 207
+                },
+                {
+                    "Text": "Over 5 years",
+                    "Tags": [],
+                    "NextQID": 205
+                }
+            ]
+    },
+    "207": {
+        "QuestionID": 207,
+        "Question Text": "Do you have a stable job?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 208
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Prevention/Advice/Safety Planning", "Education/Job Training"],
+                    "NextQID": 301
+                }
+            ]
+    },
+    "208": {
+        "QuestionID": 208,
+        "Question Text": "Are you able to meet the basic needs of yourself and any dependents?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Advocacy", "Survivor Leadership"],
+                    "NextQID": 301
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Prevention/Advice/Safety Planning", "Education/Job Training"],
+                    "NextQID": 301
+                }
+            ]
+    },
+    "205": {
+        "QuestionID": 205,
+        "Question Text": "Do you have a stable job?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": [],
+                    "NextQID": 206
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Prevention/Advice/Safety Planning", "Education/Job Training"],
+                    "NextQID": 301
+                }
+            ]
+    },
+    "206": {
+        "QuestionID": 206,
+        "Question Text": "Are you able to meet the basic needs of yourself and any dependents?",
+        "Question Type": "YN",
+        "Answer Possibilities":
+            [
+                {
+                    "Text": "Yes",
+                    "Tags": ["Advocacy", "Survivor Leadership"],
+                    "NextQID": 301
+                },
+                {
+                    "Text": "No",
+                    "Tags": ["Prevention/Advice/Safety Planning", "Education/Job Training"],
+                    "NextQID": 301
+                }
+            ]
+    }
+}
