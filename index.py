@@ -6,32 +6,39 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    client = pymongo.MongoClient("mongodb://Admin:intercept@45.55.198.145/interceptDB")
+    client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
     db = client.interceptDB
     quant = db.organizations.count()
     print(quant)
     return str(quant)
 
+
 '''User login'''
+'''below is admin functionality-  basically, if admin, redirect to an admin portal page, otherwise, render
+normal user experience html page'''
+
+
 @app.route('/login')
 def login():
-    '''below is admin functionality-  basically, if admin, redirect to an admin portal page, otherwise, render
-    normal user experience html page'''
-  '''if session.get("admin"):
+    '''if session.get("admin"):
         return redirect('/admin_portal')
     else:
         return render_template('login_page.html')'''
 
 
 '''Handles POST action for Login, grab username/password from HTML form'''
+
+
 @app.route('/login_submit', methods=['POST'])
-def login():
+def user_login():
     username = request.form['username']
     password = request.form['password']
-
+    print("test")
 
 
 '''We receive a JSON for this POST, so we handle it accordingly using Flask's JSON functionality'''
+
+
 @app.route('/survey_submit', methods=['POST'])
 def save_survey():
     json_Dictionary = request.get_json()
