@@ -13,7 +13,7 @@ for language in pycountry.languages:
     languages.add(language.name)
 
 client = pymongo.MongoClient()
-db = client.intercept_database
+db = client.interceptDB
 organization_collection = db.organizations
 for ngo in data['accountsWithGeo']['features']:
 	# Do stuff here
