@@ -4,6 +4,7 @@ import pycountry
 from geopy.geocoders import Nominatim
 from pprint import pprint
 import geopy
+from flask_pymongo import pymongo
 
 with open('providers.geojson', encoding="utf8") as data_file:    
     data = json.load(data_file)
