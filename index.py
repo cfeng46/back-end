@@ -1,18 +1,38 @@
 from flask import Flask, render_template, request, redirect, jsonify, session
 from flask_pymongo import pymongo
-from bson.objectid import ObjectId
 from bson import json_util
+import database.queries as queries
+
+
 
 app = Flask(__name__)
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
 
+
 '''Test to JSONIFY DB result of orgs'''
+
+
 @app.route('/')
-def db_tests():
+def db_tests1():
     organizationsCollection = db.organizations
     arrayOfOrgs = list(organizationsCollection.find())
     return json_util.dumps(arrayOfOrgs, default=json_util.default)
+
+
+@app.route('/test')
+def db_tests():
+    return list(queries.get_questions())
+
+
+@app.route('/organization')
+def organization():
+    org_ID = request.args.get('id', default='*', type=str)
+
+    the_org = queries.get_org_by_ID(org_ID)
+    print(org_ID)
+    print(the_org)
+    return str(the_org)
 
 
 '''User login'''
