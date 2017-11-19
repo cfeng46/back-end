@@ -22,7 +22,7 @@ records = db.records
 def get_questions():
     questions_list = questions.find()
     print(questions_list)
-    return questions_list
+    return json_util.dumps(questions_list, default=json_util.default)
 
 # insert document from completed survey to record collection
 # takes location and list of tags POSTed
