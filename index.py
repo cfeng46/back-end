@@ -57,9 +57,12 @@ def login():
     entered_password = request.args.get('password', default='*', type=str)
     survey_password = queries.get_survey_password(surveyID)
     if bcrypt.checkpw(entered_password, survey_password):
-        print("It Matches!")
+        surveyID = request.args.get('id', default='*', type=str)
+        orgs = queries.find_orgs_by_matching_tags(surveyID)
+        relevant_orgs = queries.find_orgs_with_one_service(orgs, surveyID)
+        return json_util.dumps(relevant_orgs, default=json_util.default)
     else:
-        print("It Does not Match :(")
+        return "No match"
 
 
 '''Load questions for /questions GET'''
