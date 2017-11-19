@@ -18,9 +18,9 @@ records = db.records
 # return full list of questions
 # pulls all question documents from the question collection
 def get_questions():
-    questions_list = questions.find({})
+    questions_list = questions.find()
+    print(questions_list)
     return questions_list
-
 
 # insert document from completed survey to record collection
 # takes location and list of tags POSTed
@@ -40,18 +40,22 @@ def insert_record(location, populations, services, languages):
 def get_org_by_ID(id):
     return organizations.find_one({'_id': ObjectId(id)})
 
-
+# return all organizations that match mandatory demographic tags
 def find_orgs_by_matching_tags(survey_id):
     survey = records.find_one({'_id': ObjectId(survey_id)})
-    stuff = []
-    for org in organizations.find({'populations':{'$exists':True}}):
-        for tag in org["populations"]:
-            for item in survey['populations']:
-                if(tag==item):
-                    stuff.append(org)
-                    print(org["populations"])
+    organization_list = []
+    for org in organizations.find({'populations': {'$exists': True}}):
+        valid = True
+        for item in survey['populations']:
+            if item not in org['populations'] or survey['languages'] not in org['languages']:
+                valid = False
+                break
+        if valid:
+            organization_list.append(org)
+            # print(org["populations"])
+            # print(org['languages'])
 
-    return stuff
+    return organization_list
     ''' orgsList = []
     for category in surv:
         for value in category:
@@ -62,13 +66,30 @@ def find_orgs_by_matching_tags(survey_id):
                 orgsList.append(item_json)
     print(orgsList)'''
 
-# updates user with password
-def update_password_by_ID(survey_id, new_password):
+
+# gets organizations based on location of survey
+def get_orgs_near_location(survey_id):
+    survey = records.find_one({'_id': ObjectId(survey_id)})
+
+
+
+# returns organizations from the list of mandatory
+# that include at least one service that they need
+# takes the list of organizations and survey id to compare as parameters
+def find_orgs_with_one_service(orgs, survey_id):
+    survey = records.find_one({'_id': ObjectId(survey_id)})
+    orgs_with_services = []
+    for org in orgs:
+        for service in survey['services']:
+            if service in org['services']:
+                if org in orgs_with_services:
+                    break
+                orgs_with_services.append(org)
+            print(service)
+    return orgs_with_services
+
+
+
+# updates user to include password
+def update_password_by_id(survey_id, new_password):
     records.find_one_and_update({'_id': ObjectId(survey_id)}, {'password': new_password})
-
-
-# returns list of applicable organizations
-# based on the tags of the specific survey
-def find_organizations_with_mandatory_tags(survey_id):
-    for org in organizations.find()
-        for tag in tags
