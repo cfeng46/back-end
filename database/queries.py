@@ -30,7 +30,8 @@ def insert_record(location, populations, services, languages):
        'languages': languages,
        'password': ''
     }
-    return records.insert_one(record)
+    print(records.count())
+    records.insert_one(record)
 
 
 # return organization based on given id
@@ -45,6 +46,6 @@ def update_password_by_ID(survey_id, new_password):
 
 # returns list of applicable organizations
 # based on the tags of the specific survey
-def find_organizations_with_matching_tags(survey_id):
-    print('Hi')
-    relevant__organizations = organizations.find({{'age': survey_id['populations']}, {'gender': survey_id}})
+def find_organizations_with_mandatory_tags(survey_id):
+    for org in organizations.find()
+        for tag in tags
