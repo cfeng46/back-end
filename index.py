@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify, session
+from flask import Flask, render_template, request, json, redirect, jsonify, session
 from flask_pymongo import pymongo
 from bson import json_util
 import database.queries as queries
@@ -9,11 +9,17 @@ client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptD
 db = client.interceptDB
 
 
+@app.route('/testSurvey')
+def surveyMatch():
+    surveyID = request.args.get('id', default='*', type=str)
+
+    return queries.find_orgs_by_matching_tags(surveyID)
+
 '''Load questions for /questions GET'''
 @app.route('/questions')
 def questions():
-    questions_json = open(os.path.join(app.static_folder, "data", "questions.json"), "r")
-    return questions_json
+    filename = os.path.join(app.static_folder, 'questions.json')
+    return filename
 
 
 '''Test to JSONIFY DB result of orgs'''
@@ -26,7 +32,7 @@ def db_tests1():
 
 @app.route('/test')
 def db_tests():
-    return list(queries.get_questions())
+    return json_util.dumps(list(db.records.find()), default=json_util.default)
 
 
 @app.route('/organization')
