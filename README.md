@@ -28,9 +28,9 @@ Method: GET
 Provides all questions in JSON format to front-end for display.
 
 ### save_survey()  
-route /surveySubmit
-Method: POST
-Args: Survey submit form
+route /surveySubmit  
+Method: POST  
+Args: Survey submit form  
 Saves the survey with the password and all tags
 
 ### show_survey_results()
