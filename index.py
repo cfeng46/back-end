@@ -18,51 +18,19 @@ def surveyMatch():
 '''Load questions for /questions GET'''
 @app.route('/questions')
 def questions():
-    data = json_util.dumps(queries.get_questions(), default=json_util.default)
+    data = queries.get_questions()
     return data
-
-
-'''Test to JSONIFY DB result of orgs'''
-@app.route('/testOrgPull')
-def db_tests1():
-    organizations = db.organizations
-    arrayOfOrgs = list(organizations.find())
-    return json_util.dumps(arrayOfOrgs, default=json_util.default)
-
-
-@app.route('/test')
-def db_tests():
-    return json_util.dumps(list(db.records.find()), default=json_util.default)
 
 
 @app.route('/organization')
 def organization():
-    org_ID = request.args.get('id', default='*', type=str)
-    the_org = queries.get_org_by_ID(org_ID)
-    return render_template('organization.html', data=the_org)
-
-
-'''User login'''
-'''below is admin functionality-  basically, if user is admin, redirect to an admin portal page, otherwise, render
-normal user experience html page'''
-
-
-@app.route('/login')
-def login():
-    '''if session.get("admin"):
-        return redirect('/admin_portal')
+    org_ID = request.args.get('id', default=None, type=str)
+    if(org_ID == None):
+        orgs = queries.get_orgs()
     else:
-        return render_template('login_page.html')'''
+        orgs = queries.get_org_by_ID(org_ID)
+    return orgs
 
-
-'''Handles POST action for Login, grab username/password from HTML form'''
-
-
-@app.route('/login_submit', methods=['POST'])
-def user_login():
-    username = request.form['username']
-    password = request.form['password']
-    print("test")
 
 
 '''We receive a JSON for this POST, so we handle it accordingly using Flask's JSON functionality'''
