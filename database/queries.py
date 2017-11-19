@@ -42,6 +42,7 @@ def insert_record(location, populations, services, languages):
 def get_org_by_ID(id):
     return json_util.dumps(organizations.find_one({'_id': ObjectId(id)}), default=json_util.default)
 
+# return all organizations
 def get_orgs():
     return json_util.dumps(organizations.find(), default=json_util.default)
 
@@ -58,20 +59,8 @@ def find_orgs_by_matching_tags(survey_id):
                 break
         if valid:
             organization_list.append(org)
-            # print(org["populations"])
-            # print(org['languages'])
-
+          
     return organization_list
-    ''' orgsList = []
-    for category in surv:
-        for value in category:
-            item = db.organizations.find({category: value})
-            print(item.explain())
-            if(item.count()>0):
-                item_json = json_util.dumps(list(item), default=json_util.default)
-                orgsList.append(item_json)
-    print(orgsList)'''
-
 
 # gets organizations based on location of survey
 def get_orgs_near_location(orgs, survey_id):
