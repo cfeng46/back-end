@@ -18,7 +18,7 @@ def show_survey_results():
     return json_util.dumps(relevant_orgs, default=json_util.default)
 
 '''Updates the user password'''
-@app.route('/createPassword')
+@app.route('/password', methods=['POST'])
 def create_password():
     surveyID = request.args.get('id', default='*', type=str)
     password = request.args.get('password', default='*', type=str)
@@ -27,7 +27,7 @@ def create_password():
     return json_util.dumps(db.records.find(), default=json_util.default)
 
 '''Checks the user password'''
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
     surveyID = request.args.get('id', default='*', type=str)
     entered_password = request.args.get('password', default='*', type=str)
