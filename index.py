@@ -1,25 +1,33 @@
-from flask import Flask, render_template, request, redirect, jsonify, session
+from flask import Flask, render_template, request, json, redirect, jsonify, session
 from flask_pymongo import pymongo
 from bson import json_util
 import database.queries as queries
-
-
+import os
 
 app = Flask(__name__)
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
 
 
+@app.route('/testSurvey')
+def surveyMatch():
+    surveyID = request.args.get('id', default='*', type=str)
+
+    return queries.find_orgs_by_matching_tags(surveyID)
+
+'''Load questions for /questions GET'''
+@app.route('/questions')
+def questions():
+    filename = os.path.join(app.static_folder, 'questions.json')
+    return filename
+
+
 '''Test to JSONIFY DB result of orgs'''
-
-
-@app.route('/')
+@app.route('/testOrgPull')
 def db_tests1():
-    services = ['Legal Services', 'Shelter', 'Food']
-    populations = ['Adult', 'Male', 'Transgender Male-to-Female', 'Female', 'Minor (Under 18)']
-    user = queries.insert_record('Atlanta', populations, services, 'English')
-    return "hey5"
-    # return db.organizations.find({'populations'})
+    organizations = db.organizations
+    arrayOfOrgs = list(organizations.find())
+    return json_util.dumps(arrayOfOrgs, default=json_util.default)
 
 
 @app.route('/test')
@@ -35,7 +43,7 @@ def organization():
 
 
 '''User login'''
-'''below is admin functionality-  basically, if admin, redirect to an admin portal page, otherwise, render
+'''below is admin functionality-  basically, if user is admin, redirect to an admin portal page, otherwise, render
 normal user experience html page'''
 
 
