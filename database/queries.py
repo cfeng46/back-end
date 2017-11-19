@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, jsonify, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bson import json_util
+from geopy.geocoders import Nominatim
+from geopy.distance import vincenty
 app = Flask(__name__)
 
 # connect to the database
@@ -72,9 +74,23 @@ def find_orgs_by_matching_tags(survey_id):
 
 
 # gets organizations based on location of survey
-def get_orgs_near_location(survey_id):
+def get_orgs_near_location(orgs, survey_id):
     survey = records.find_one({'_id': ObjectId(survey_id)})
-
+    geolocator = Nominatim()
+    location = geolocator.geocode(survey['location'])
+    local_orgs = []
+    for org in orgs:
+       # coord = org['coordinates']
+        print(org['coordinates']['latitude'])
+        org_loc = org['coordinates']['latitude'], ', ', org['coordinates']['longitude']
+        print(org_loc)
+        survey_loc = str(location.latitude) + ', ' + str(location.longitude)
+        distance = vincenty(survey_loc, org_loc).miles
+        print(distance)
+        if distance <= 50:
+            local_orgs.append(org)
+            print(org['coordinates'])
+    return local_orgs
 
 
 # returns organizations from the list of mandatory
@@ -89,11 +105,15 @@ def find_orgs_with_one_service(orgs, survey_id):
                 if org in orgs_with_services:
                     break
                 orgs_with_services.append(org)
-            print(service)
+            #print(service)
     return orgs_with_services
-
 
 
 # updates user to include password
 def update_password_by_id(survey_id, new_password):
-    records.find_one_and_update({'_id': ObjectId(survey_id)}, {'password': new_password})
+    return records.find_one_and_update({'_id': survey_id}, {"$set": {'password': new_password}}, upsert=True)
+
+
+# gets the users password from a survey record
+def get_survey_password(survey_id):
+    return records.find_one({'_id': ObjectId(survey_id)})
