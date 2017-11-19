@@ -15,9 +15,10 @@ db = client.interceptDB
 
 @app.route('/')
 def db_tests1():
-    organizationsCollection = db.organizations
-    arrayOfOrgs = list(organizationsCollection.find())
-    return json_util.dumps(arrayOfOrgs, default=json_util.default)
+    services = ['Legal Services', 'Shelter', 'Food']
+    populations = ['Minor', 'Male']
+    user = queries.insert_record('Carrollton', populations, services, 'English')
+    return user
 
 
 @app.route('/test')
