@@ -2,16 +2,18 @@
 {% block body %}
 
 <div>
-	<div>
-		<img src="../static/images/test.png" id="profile-pic">
-	</div>
-	<div>
-		<p>{{data.name}}</p>
-		<p>{{data.mission_statement}}</p>
-		<p><span class="bold">Location</span> {{data.contact_info.location.city}}, {{data.contact_info.location.state}}</p>
-	</div>
-	<div>
-			Test test test
+	<div class="row">
+		<div class=col-md-4>
+			<img src="../static/images/test.png" id="profile-pic">
+		</div>
+		<div class=col-md-4>
+			<p>{{data.name}}</p>
+			<p>{{data.mission_statement}}</p>
+			<p><span class="bold">Location</span> {{data.contact_info.location.city}}, {{data.contact_info.location.state}}</p>
+		</div>
+		<div class=col-md-4>
+				Test test test
+		</div>
 	</div>
 </div>
-{% endblock %}
+{% endblock %} 
