@@ -9,7 +9,7 @@ Args: location, populations, services, languages
 Inserts each collection of tags into the stored survey database
 
 ### get_org_by_id()
-Args: id
+Args: id  
 Retrieves a single org by the organization id
 
 ### get_orgs()
