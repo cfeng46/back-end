@@ -18,8 +18,8 @@ def surveyMatch():
 '''Load questions for /questions GET'''
 @app.route('/questions')
 def questions():
-    filename = os.path.join(app.static_folder, 'questions.json')
-    return filename
+    data = json_util.dumps(queries.get_questions(), default=json_util.default)
+    return data
 
 
 '''Test to JSONIFY DB result of orgs'''
