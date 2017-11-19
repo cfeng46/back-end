@@ -2,21 +2,25 @@ from flask import Flask, render_template, request, redirect, jsonify, session
 from flask_pymongo import pymongo
 from bson import json_util
 import database.queries as queries
-
-
+import os
 
 app = Flask(__name__)
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
 
 
+'''Load questions for /questions GET'''
+@app.route('/questions')
+def questions():
+    questions_json = open(os.path.join(app.static_folder, "data", "questions.json"), "r")
+    return questions_json
+
+
 '''Test to JSONIFY DB result of orgs'''
-
-
-@app.route('/')
+@app.route('/testOrgPull')
 def db_tests1():
-    organizationsCollection = db.organizations
-    arrayOfOrgs = list(organizationsCollection.find())
+    organizations = db.organizations
+    arrayOfOrgs = list(organizations.find())
     return json_util.dumps(arrayOfOrgs, default=json_util.default)
 
 
@@ -30,13 +34,11 @@ def organization():
     org_ID = request.args.get('id', default='*', type=str)
 
     the_org = queries.get_org_by_ID(org_ID)
-    print(org_ID)
-    print(the_org)
-    return str(the_org)
+    return json_util.dumps(the_org, default=json_util.default)
 
 
 '''User login'''
-'''below is admin functionality-  basically, if admin, redirect to an admin portal page, otherwise, render
+'''below is admin functionality-  basically, if user is admin, redirect to an admin portal page, otherwise, render
 normal user experience html page'''
 
 
