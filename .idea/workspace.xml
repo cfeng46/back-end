@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12d0d978-d88e-4c79-85b4-0b8504c01f76" name="Default" comment="Merge branch 'master' of https://github.com/interceptproject/intercept&#10;&#10;# Conflicts:&#10;#&#9;index.py">
+    <list default="true" id="12d0d978-d88e-4c79-85b4-0b8504c01f76" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/queries.py" afterPath="$PROJECT_DIR$/database/queries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.py" afterPath="$PROJECT_DIR$/index.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,6 +35,28 @@
               <caret line="117" column="35" lean-forward="false" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <marker date="1511119381280" expanded="true" signature="770:871" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="934:1159" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="949:1100" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1224:1325" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1342:1418" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1528:2418" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1686:2034" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1750:1896" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1844:1896" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1914:2034" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="1969:2034" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="2069:2418" ph="'''...'''" />
+                <marker date="1511119381280" expanded="true" signature="2514:3169" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="2698:3147" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3074:3147" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3172:3346" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3395:3767" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3504:3737" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3547:3737" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3590:3737" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="3856:3966" ph="..." />
+                <marker date="1511119381280" expanded="true" signature="4051:4109" ph="..." />
               </folding>
             </state>
           </provider>
@@ -242,10 +262,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16944024" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3990307" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -279,7 +298,8 @@
     <MESSAGE value="resolved merge issues" />
     <MESSAGE value="added queries and api functionality to get survey results" />
     <MESSAGE value="Merge branch 'master' of https://github.com/interceptproject/intercept&#10;&#10;# Conflicts:&#10;#&#9;index.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/interceptproject/intercept&#10;&#10;# Conflicts:&#10;#&#9;index.py" />
+    <MESSAGE value="Added login functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added login functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -326,6 +346,28 @@
           <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <marker date="1511119381280" expanded="true" signature="770:871" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="934:1159" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="949:1100" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1224:1325" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1342:1418" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1528:2418" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1686:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1750:1896" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1844:1896" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1914:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1969:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="2069:2418" ph="'''...'''" />
+            <marker date="1511119381280" expanded="true" signature="2514:3169" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="2698:3147" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3074:3147" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3172:3346" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3395:3767" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3504:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3547:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3590:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3856:3966" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="4051:4109" ph="..." />
           </folding>
         </state>
       </provider>
@@ -508,6 +550,28 @@
           <caret line="117" column="35" lean-forward="false" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <marker date="1511119381280" expanded="true" signature="770:871" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="934:1159" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="949:1100" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1224:1325" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1342:1418" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1528:2418" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1686:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1750:1896" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1844:1896" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1914:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="1969:2034" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="2069:2418" ph="'''...'''" />
+            <marker date="1511119381280" expanded="true" signature="2514:3169" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="2698:3147" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3074:3147" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3172:3346" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3395:3767" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3504:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3547:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3590:3737" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="3856:3966" ph="..." />
+            <marker date="1511119381280" expanded="true" signature="4051:4109" ph="..." />
           </folding>
         </state>
       </provider>
