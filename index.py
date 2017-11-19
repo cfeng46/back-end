@@ -32,9 +32,8 @@ def db_tests():
 @app.route('/organization')
 def organization():
     org_ID = request.args.get('id', default='*', type=str)
-
     the_org = queries.get_org_by_ID(org_ID)
-    return json_util.dumps(the_org, default=json_util.default)
+    return render_template('organization.html', data=the_org)
 
 
 '''User login'''
