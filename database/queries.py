@@ -38,7 +38,11 @@ def insert_record(location, populations, services, languages):
 
 # return organization based on given id
 def get_org_by_ID(id):
-    return organizations.find_one({'_id': ObjectId(id)})
+    return json_util.dumps(organizations.find_one({'_id': ObjectId(id)}), default=json_util.default)
+
+def get_orgs():
+    return json_util.dumps(organizations.find(), default=json_util.default)
+
 
 # return all organizations that match mandatory demographic tags
 def find_orgs_by_matching_tags(survey_id):
