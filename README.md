@@ -5,14 +5,14 @@ This repository is the back-end API for Intercept. Contained within is the Flask
 # Methods
 
 ### create_password()
-Route: /createPassword  
-Method: GET   
-Args: id, password  
+Route: /password  
+Method: POST   
+Args: Form data  
 Allows users to anonymously store survey results for later retreival
 
 ### login()
 Route: /login   
-Method: GET   
+Method: POST   
 Args: id, password  
 Allows the user to enter a previous survey ID and pasword, and view saved results.
 
@@ -30,7 +30,7 @@ Provides all questions in JSON format to front-end for display.
 ### save_survey()  
 route /surveySubmit  
 Method: POST  
-Args: Survey submit form  
+Args: Form data  
 Saves the survey with the password and all tags
 
 ### show_survey_results()
