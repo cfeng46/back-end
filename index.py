@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, json, redirect, jsonify, session
+from flask import Flask, render_template, request, json, redirect, jsonify, session, make_response
 from flask_pymongo import pymongo
 from bson import json_util
 import database.queries as queries
@@ -13,6 +13,7 @@ db = client.interceptDB
 @app.route('/showSurveyResults')
 def show_survey_results():
     surveyID = request.args.get('id', default='*', type=str)
+    print("THis is surveyID" + surveyID)
     orgs = queries.find_orgs_by_matching_tags(surveyID)
     relevant_orgs = queries.find_orgs_with_one_service(orgs, surveyID)
     return json_util.dumps(relevant_orgs, default=json_util.default)
@@ -50,20 +51,29 @@ def questions():
     orgs if the ID is nor present '''
 @app.route('/organization')
 def organization():
+    print("Wir sind am besten")
     org_ID = request.args.get('id', default=None, type=str)
     if(org_ID == None):
         orgs = queries.get_orgs()
     else:
         orgs = queries.get_org_by_ID(org_ID)
+    print(type(orgs))
     return orgs
 
 '''We receive a JSON for this POST, so we handle it accordingly using Flask's JSON functionality'''
+'''Saves the survey record with the password and all relevant tags'''
+'''example is { 'populations' : ['male', 'transgender-female-male']
+                'services
+'''
 @app.route('/surveySubmit', methods=['POST'])
 def save_survey():
-    json_Dictionary = request.get_json()
-    '''do stuff with jsonDict- parse into format for DB insert'''
+    '''Gets the dictionary that contains the keys and values'''
+    json_Dictionary = request.get_json(True)
+    relevant_orgs = queries.get_relevant_orgs(json_Dictionary)
+    print("len in save_survey: ", len(relevant_orgs))
     print("test survey submit")
-
+    return relevant_orgs
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int("80"))
+    # app.run(host="0.0.0.0", port=int("80"))
+    app.run(debug=True)

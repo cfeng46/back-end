@@ -25,17 +25,21 @@ def get_questions():
     return json_util.dumps(questions_list, default=json_util.default)
 
 # insert document from completed survey to record collection
-# takes location and list of tags POSTed
-def insert_record(location, populations, services, languages):
-    record = {
-       'location': location,
-       'populations': populations,
-       'services': services,
-       'languages': languages,
-       'password': ''
-    }
-    print(records.count())
-    records.insert_one(record)
+# takes location and a dictionary of tags
+
+
+def insert_record(json_dict):
+    # record = {
+    #    'location': location,
+    #    'populations': populations,
+    #    'services': services,
+    #    'languages': languages,
+    #    'password': ''
+    # }
+    json_dict['password'] = ''
+    print("length of dict inputted into db: ", len(json_dict))
+    result = records.insert_one(json_dict)
+    return result.inserted_id
 
 
 # return organization based on given id
@@ -46,6 +50,18 @@ def get_org_by_ID(id):
 def get_orgs():
     return json_util.dumps(organizations.find(), default=json_util.default)
 
+# return organizations that are relevant given a dictionary of population, language, location, and service tags
+# returns a list of relevant organizations
+def get_relevant_orgs(front_end_json):
+    survey_id = insert_record(front_end_json)
+    print("This is survey_id: ", survey_id)
+    base_orgs = find_orgs_by_matching_tags(survey_id)
+    final_orgs = find_orgs_with_one_service(base_orgs, survey_id)
+    final_orgs = get_orgs_near_location(final_orgs, survey_id)
+    print("This is final orgs count: ", len(final_orgs))
+    # for org in final_orgs:
+    #     print(org)
+    return json_util.dumps(final_orgs, default=json_util.default)
 
 # return all organizations that match mandatory demographic tags
 def find_orgs_by_matching_tags(survey_id):
@@ -54,10 +70,12 @@ def find_orgs_by_matching_tags(survey_id):
     for org in organizations.find({'populations': {'$exists': True}}):
         valid = True
         for item in survey['populations']:
-            if item not in org['populations'] or survey['languages'] not in org['languages']:
+            # if item not in org['populations'] or survey['languages'] not in org['languages']:
+            if item not in org['populations']:
                 valid = False
                 break
         if valid:
+            # print(org['name'])
             organization_list.append(org)
           
     return organization_list
@@ -65,20 +83,24 @@ def find_orgs_by_matching_tags(survey_id):
 # gets organizations based on location of survey
 def get_orgs_near_location(orgs, survey_id):
     survey = records.find_one({'_id': ObjectId(survey_id)})
+    print(survey.keys())
+    print(survey['location'])
     geolocator = Nominatim()
     location = geolocator.geocode(survey['location'])
     local_orgs = []
     for org in orgs:
        # coord = org['coordinates']
-        print(org['coordinates']['latitude'])
-        org_loc = org['coordinates']['latitude'], ', ', org['coordinates']['longitude']
-        print(org_loc)
+       #  print(org['coordinates']['latitude'])
+        # org_loc = org['coordinates']['latitude'], ', ', org['coordinates']['longitude']
+        org_loc = (org['coordinates']['latitude'], org['coordinates']['longitude'])
+        # print(org_loc)
         survey_loc = str(location.latitude) + ', ' + str(location.longitude)
         distance = vincenty(survey_loc, org_loc).miles
-        print(distance)
-        if distance <= 50:
+        # print(distance)
+        if distance <= 100:
             local_orgs.append(org)
-            print(org['coordinates'])
+            print(org['name'])
+            # print(org['coordinates'])
     return local_orgs
 
 
