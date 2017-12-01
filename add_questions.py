@@ -1,4 +1,5 @@
 import json
+from flask_pymongo import pymongo
 from pymongo import MongoClient
 
 with open('questions.json', encoding="utf8") as data_file:    
