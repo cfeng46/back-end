@@ -68,12 +68,17 @@ def find_orgs_by_matching_tags(survey_id):
     survey = records.find_one({'_id': ObjectId(survey_id)})
     organization_list = []
     for org in organizations.find({'populations': {'$exists': True}}):
-        valid = True
+        # valid = True
+        valid = False
+        count = 0
         for item in survey['populations']:
             # if item not in org['populations'] or survey['languages'] not in org['languages']:
-            if item not in org['populations']:
-                valid = False
-                break
+            # if item not in org['populations']:
+            #     valid = False
+            #     break
+            if item in org['populations']:
+                count += 1
+                valid = True
         if valid:
             # print(org['name'])
             organization_list.append(org)
