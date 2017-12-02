@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, json, redirect, jsonify, session, make_response
 from flask_pymongo import pymongo
+from flask_cors import CORS
 from bson import json_util
 import database.queries as queries
 import os
 import bcrypt
 
 app = Flask(__name__)
+CORS(app)
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
 
