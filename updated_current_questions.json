@@ -104,7 +104,7 @@
         "answerPossibilities":
             [
                 {
-                    "text": "Under 18",
+                    "text": "Under 18", 
                     "tags": ["Minor", "Minor (Under 18)"],
                     "nextQID": 402
                 },
@@ -128,7 +128,7 @@
                 },
                 {
                     "text": "No",
-                    "tags": ["Homeless Populations", "Emergency Shelter”, “Shelter”],
+                    "tags": ["Homeless Populations", "Emergency Shelter", "Shelter"],
                     "nextQID": 404
                 }
             ]
@@ -177,7 +177,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Child Care”],
+                    "tags": ["Child Care"],
                     "nextQID": 501
                 },
                 {
@@ -200,7 +200,7 @@
                 },
                 {
                     "text": "No",
-                    "tags": ["Emergency Shelter”],
+                    "tags": ["Emergency Shelter"],
                     "nextQID": 410
                 }
             ]
@@ -296,12 +296,12 @@
                 {
                     "text": "Transgender Male to Female",
                     "tags": ["Female", "Transgender Male-to-Female", "Specializing in serving LGBTQI"],
-                    "nextQID": 501
+                    "nextQID": 0
                 },
                 {
-                    "text": "Transgender Male to Female",
+                    "text": "Transgender Female to Male",
                     "tags": ["Male", "Transgender Female-to-Male", "Specializing in serving LGBTQI"],
-                    "nextQID": 501
+                    "nextQID": 0
                 }
             ]
     },
@@ -314,12 +314,12 @@
                 {
                     "text": "Straight",
                     "tags": [],
-                    "nextQID": 501
+                    "nextQID": 0
                 },
                 {
                     "text": "LGBTQI",
                     "tags": ["Specializing in serving LGBTQI"],
-                    "nextQID": 501
+                    "nextQID": 0
                 }
             ]
     },
@@ -331,7 +331,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Citizen/Legal Permanent Resident“],
+                    "tags": ["Citizen/Legal Permanent Resident"],
                     "nextQID": 601
                 },
                 {
@@ -349,7 +349,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Migrant Workers”, “Legal Services - Civil”],
+                    "tags": ["Migrant Workers", "Legal Services - Civil"],
                     "nextQID": 503
                 },
                 {
@@ -372,7 +372,7 @@
                 },
                 {
                     "text": "No",
-                    "tags": ["Legal Services”, “Legal Services - Immigration”, “Legal Services - Criminal & Crime Victim Advocacy”],
+                    "tags": ["Legal Services", "Legal Services - Immigration", "Legal Services - Criminal & Crime Victim Advocacy"],
                     "nextQID": 504
                 }
             ]
@@ -422,12 +422,12 @@
                 {
                     "text": "Yes",
                     "tags": ["Religious/Social/Political Minority Groups"],
-                    "nextQID": 301
+                    "nextQID": 0
                 },
                 {
                     "text": "No",
                     "tags": [],
-                    "nextQID": 301
+                    "nextQID": 0
                 }
             ]
     },
@@ -475,7 +475,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Specialization in serving people with disabilities", "Health Care”, “People with Disabilities”],
+                    "tags": ["Specialization in serving people with disabilities", "Health Care", "People with Disabilities"],
                     "nextQID": 304
                 },
                 {
@@ -493,7 +493,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Psychological Support","Health Care”, “Mental Health Treatment”],
+                    "tags": ["Psychological Support","Health Care", "Mental Health Treatment"],
                     "nextQID": 305
                 },
                 {
@@ -511,7 +511,7 @@
             [
                 {
                     "text": "Yes",
-                    "tags": ["Rehabilitation/Case Management","Health Care”, “Addiction Treatment/Services”],
+                    "tags": ["Rehabilitation/Case Management","Health Care", "Addiction Treatment/Services"],
                     "nextQID": 401
                 },
                 {
@@ -595,7 +595,7 @@
                 },
                 {
                     "text": "Yes",
-                    "tags": ["Crisis Services", "Education/Job Training", "Prevention/Advice/Safety Planning”, “Supportive Counseling”, “Case Management”],
+                    "tags": ["Crisis Services", "Education/Job Training", "Prevention/Advice/Safety Planning", "Supportive Counseling", "Case Management"],
                     "nextQID": 301
                 }
             ]
@@ -613,7 +613,7 @@
                 },
                 {
                     "text": "Under 5 years",
-                    "tags": ["Prevention/Advice/Safety Planning”, “Supportive Counseling”],
+                    "tags": ["Prevention/Advice/Safety Planning", "Supportive Counseling"],
                     "nextQID": 207
                 },
                 {

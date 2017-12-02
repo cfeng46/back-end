@@ -299,7 +299,7 @@
                     "nextQID": 0
                 },
                 {
-                    "text": "Transgender Male to Female",
+                    "text": "Transgender Female to Male",
                     "tags": ["Male", "Transgender Female-to-Male", "LGBTQI Individuals"],
                     "nextQID": 0
                 }
@@ -414,7 +414,7 @@
             ]
     },
     {
-        "questionID": 702,
+        "questionID": 602,
         "questionText": "Do you consider yourself a member of a religious, social, or ethnic minority?",
         "questionType": "YN",
         "answerPossibilities":
