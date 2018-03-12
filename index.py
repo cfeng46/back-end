@@ -1,80 +1,50 @@
-from flask import Flask, render_template, request, json, redirect, jsonify, session, make_response
+from flask import Flask, render_template, request, json, redirect, jsonify
 from flask_pymongo import pymongo
 from flask_cors import CORS
 from bson import json_util
-import database.queries as queries
 import os
 import bcrypt
+import database.queries as queries
+import database.survey as survey
+import database.record as record
 
 app = Flask(__name__)
 CORS(app)
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
 
-'''Load organizations that are relevant based on survey results'''
-@app.route('/showSurveyResults')
-def show_survey_results():
-    surveyID = request.args.get('id', default='*', type=str)
-    print("THis is surveyID" + surveyID)
-    orgs = queries.find_orgs_by_matching_tags(surveyID)
-    relevant_orgs = queries.find_orgs_with_one_service(orgs, surveyID)
-    return json_util.dumps(relevant_orgs, default=json_util.default)
+# Survey related
+@app.route('/survey', methods=['GET', 'POST'])
+def survey():
+    if request.method == 'GET':
+        tag_id = request.args.get('tagId')
+        print('tagID selected: ' + tag_id)
+        return jsonify(survey.get_questions(tag_id))
+    if request.method == 'POST':
+        # LATER
 
-'''Updates the user password'''
-@app.route('/password', methods=['POST'])
-def create_password():
-    surveyID = request.args.get('id', default='*', type=str)
-    password = request.args.get('password', default='*', type=str)
-    enc_pass = password.encode('utf-8')
-    queries.update_password_by_id(surveyID, bcrypt.hashpw(enc_pass, bcrypt.gensalt(12)))
-    return json_util.dumps(db.records.find(), default=json_util.default)
 
-'''Checks the user password'''
-@app.route('/login', methods=['POST'])
-def login():
-    surveyID = request.args.get('id', default='*', type=str)
-    entered_password = request.args.get('password', default='*', type=str)
-    survey_password = queries.get_survey_password(surveyID)
-    if bcrypt.checkpw(entered_password, survey_password):
-        surveyID = request.args.get('id', default='*', type=str)
-        orgs = queries.find_orgs_by_matching_tags(surveyID)
-        relevant_orgs = queries.find_orgs_with_one_service(orgs, surveyID)
-        return json_util.dumps(relevant_orgs, default=json_util.default)
-    else:
-        return "No match"
+# Record related
+@app.route('/record', methods=['GET', 'POST'])
+def record():
+    if request.method == 'GET':
+        record_id = request.args.get('recordId')
+        print('getting record ID: ' + record_id)
+        return jsonify(record.get_record(record_id))
+    elif request.method == 'POST':
+        # create a record and return search results
+        # LATER: additional password option
+        record_id = record.add_record(request.get_json())
+        record = record.get_record(record_id)
+        print('returning search result using recordID: ' + record_id)
+        return jsonify(organization.get_organizations_by_tags(record['tags']))
 
-'''Load questions for /questions GET'''
-@app.route('/questions')
-def questions():
-    data = queries.get_questions()
-    return data
 
-'''Retrieves the provided organization if ID is present, or all
-    orgs if the ID is nor present '''
-@app.route('/organization')
+# Organization related
+@app.route('/organization', methods=['GET'])
 def organization():
-    print("Wir sind am besten")
-    org_ID = request.args.get('id', default=None, type=str)
-    if(org_ID == None):
-        orgs = queries.get_orgs()
-    else:
-        orgs = queries.get_org_by_ID(org_ID)
-    print(type(orgs))
-    return orgs
+    return jsonify(o.get_organization(request.args.get('id')))
 
-'''We receive a JSON for this POST, so we handle it accordingly using Flask's JSON functionality'''
-'''Saves the survey record with the password and all relevant tags'''
-'''example is { 'populations' : ['male', 'transgender-female-male']
-                'services
-'''
-@app.route('/surveySubmit', methods=['POST'])
-def save_survey():
-    '''Gets the dictionary that contains the keys and values'''
-    json_Dictionary = request.get_json(True)
-    relevant_orgs = queries.get_relevant_orgs(json_Dictionary)
-    print("len in save_survey: ", len(relevant_orgs))
-    print("test survey submit")
-    return relevant_orgs
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int("5050"))
