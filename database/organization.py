@@ -10,7 +10,6 @@ app = Flask(__name__)
 # connect to the database
 client = pymongo.MongoClient("mongodb://admin:intercept@45.55.198.145/interceptDB")
 db = client.interceptDB
-# create collection
 o = db.organizations
 
 def get_organization(id):
