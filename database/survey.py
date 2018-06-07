@@ -14,8 +14,13 @@ q = db.questions
 
 # return questions
 def get_questions(category_id):
-    if tag_is is None:
+    print('got to heere in surveyyy')
+    print(category_id)
+    if category_id is None:
+        print('should be in here')
+        print(q.find())
         return q.find()
     else:
+        print('should not be here')
         # implement how to create/retrieve a survey based on category(or tag?) IDs selected by user
-        return q.find({'categoryId': category_id}));
+        return q.find({'categoryId': category_id})

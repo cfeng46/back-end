@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request, json, redirect, jsonify
+from flask import Flask, render_template, request, json, redirect
 from flask_pymongo import pymongo
 from flask_cors import CORS
 from bson import json_util
 import os
 import bcrypt
-import database.queries as queries
-import database.survey as survey
-import database.record as record
+import database.queries as queries_c
+import database.survey as survey_c
+import database.record as record_c
 
 app = Flask(__name__)
 CORS(app)
@@ -19,8 +19,8 @@ def survey():
     # return a list of questions for a new survey
     if request.method == 'GET':
         category_id = request.args.get('categoryId')
-        print('tagID selected: ' + category_id)
-        return jsonify(survey.get_questions(category_id))
+        questions = survey_c.get_questions(category_id)
+        return json_util.dumps(questions, default=json_util.default)
     # LATER: TBA
     if request.method == 'POST':
         return 'TBA'
@@ -33,7 +33,7 @@ def record():
     if request.method == 'GET':
         record_id = request.args.get('recordId')
         print('getting record ID: ' + record_id)
-        return jsonify(record.get_record(record_id))
+        return json_util.dumps(record.get_record(record_id))
     # survey submitted by user
     elif request.method == 'POST':
         # LATER: additional password option
@@ -42,7 +42,7 @@ def record():
         record = record.get_record(record_id)
         print('returning search result using recordID: ' + record_id)
         # Return a list of organization based on tags from newly added record
-        return jsonify(organization.get_organizations_by_tags(record['tags']))
+        return json_util.dumps(organization.get_organizations_by_tags(record['tags']))
 
 # Record with password protection (Note the URL fragment for record ID)
 @app.route('/record/<int:record_id>', methods=['POST'])
@@ -53,7 +53,7 @@ def protected_record():
 # Organization related
 @app.route('/organization', methods=['GET'])
 def organization():
-    return jsonify(o.get_organization(request.args.get('id')))
+    return json_util.dumps(o.get_organization(request.args.get('id')))
 
 
 if __name__ == '__main__':
