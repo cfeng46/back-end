@@ -40,10 +40,9 @@ Args: id
 Retrieves all organizations that are relevant to needs determined by the given survey ID
 
 ### API Endpoints
-
-Description: represent a data model Survey: a set of questions given to a user, depending on the category of choice
-Route: /survey
-(method) GET: takes an optional query 'categoryId', returns a set of questions (example: '/survey?categoryId=3')
+/survey
+  * represent a data model Survey: a set of questions given to a user, depending on the category of choice
+  * (method) GET: takes an optional query 'categoryId', returns a set of questions (example: '/survey?categoryId=3')
 
 /record
 represent a data model Record: a survey completed and submitted by user, comes with a set of tags extracted from the user responses
