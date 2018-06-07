@@ -12,7 +12,7 @@ This repository is the back-end API for Intercept. Contained within is the Flask
  * (method) GET: takes a query 'recordId', returns a record that is not protected with password (example: '/record?id=4')
  * (method) POST: add a record; takes body data that consists of user responoses and applicable tags, creates a new Record document in DB
 
-/record/<Id>
+/record/{Id}
  * For a protected record, user must provide a password, which means it would use a POST method; so to differenciate it from newly adding a  record, which uses '/record' with POST (see above), created an additional endpoint that takes a required URL parameter for the record ID (example: 'record/4')
 
 (To be implemented)
